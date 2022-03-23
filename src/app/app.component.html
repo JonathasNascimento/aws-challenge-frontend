@@ -1,11 +1,11 @@
 <mat-toolbar color="primary">
   <span class="toolbar-title">Aws Challenge</span>
-  <button mat-button>
+  <a mat-button title="Device Management" [routerLink]="['/devices']">
     Device Management
-  </button>
-  <button mat-button>
+  </a>
+  <a mat-button title="Category Management" [routerLink]="['/categories']">
     Category Management
-  </button>
+  </a>
 </mat-toolbar>
 
 <router-outlet></router-outlet>

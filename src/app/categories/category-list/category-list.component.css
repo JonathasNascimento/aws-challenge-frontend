@@ -1,0 +1,17 @@
+.table-container {
+  overflow: hidden;
+  height: 303px;
+}
+
+.table-container:hover {
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-column-action {
+  width: 32px;
+  text-align: center;
+}

@@ -5,3 +5,7 @@
 .active-link {
   border: solid 1px;
 }
+
+.main-container {
+  padding: 60px 30px 30px;
+}

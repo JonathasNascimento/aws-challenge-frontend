@@ -3,8 +3,26 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
-};
+  production: false,
+}
+
+export const api = {
+  baseUrl: 'http://localhost:3000/',
+  endpoints: {
+    categories: '/categories',
+    devices: '/devices',
+  },
+}
+export const getApi = (key: String) => {
+  let endpoint
+  for (let proper in api.endpoints) {
+    if (proper === key) {
+      endpoint = proper
+    }
+  }
+
+  return `${api.baseUrl}${endpoint}`
+}
 
 /*
  * For easier debugging in development mode, you can import the following file

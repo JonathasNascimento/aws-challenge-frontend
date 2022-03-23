@@ -1,3 +1,7 @@
 .toolbar-title {
   padding: 0 24px;
 }
+
+.active-link {
+  border: solid 1px;
+}

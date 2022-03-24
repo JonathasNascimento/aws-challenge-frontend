@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
+import { CategoriesModule } from '../categories/categories.module';
 import { MaterialModule } from '../material.module';
 import { DeviceExcludeComponent } from './device-exclude/device-exclude.component';
 import { DeviceListComponent } from './device-list/device-list.component';
@@ -15,6 +16,11 @@ import { DevicesComponent } from './devices.component';
     DeviceListComponent,
     DeviceExcludeComponent,
   ],
-  imports: [CommonModule, DevicesRoutingModule, MaterialModule],
+  imports: [
+    CommonModule,
+    DevicesRoutingModule,
+    MaterialModule,
+    CategoriesModule,
+  ],
 })
 export class DevicesModule {}

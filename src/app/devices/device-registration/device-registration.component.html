@@ -4,14 +4,7 @@
     <form>
       <div fxLayout="column" fxLayoutGap="6px">
 
-        <mat-form-field appearance="fill">
-          <mat-label>Category</mat-label>
-          <mat-select>
-            <mat-option *ngFor="let category of categories" [value]="category.value">
-              {{category.viewValue}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
+        <app-category-select></app-category-select>
 
         <mat-form-field appearance="fill">
           <mat-label>Color</mat-label>

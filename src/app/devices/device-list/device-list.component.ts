@@ -30,6 +30,9 @@ export class DeviceListComponent implements OnInit {
     if (device.id) {
       this.devicesService.deleteDevice(device.id).subscribe((response) => {
         if (response.status == 'success') {
+          this.dataSource = this.dataSource.filter(
+            (data) => data.id != device.id,
+          )
         }
       })
     }

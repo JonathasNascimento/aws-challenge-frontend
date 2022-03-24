@@ -23,5 +23,6 @@ import { CategorySelectComponent } from './category-select/category-select.compo
     FormsModule,
     ReactiveFormsModule,
   ],
+  exports: [CategorySelectComponent],
 })
 export class CategoriesModule {}

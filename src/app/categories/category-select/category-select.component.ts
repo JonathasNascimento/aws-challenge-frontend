@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { MatSelectChange } from '@angular/material/select';
 
 import { CategoriesService } from '../categories.service';
 import { Category } from '../category.model';
@@ -10,6 +11,8 @@ import { Category } from '../category.model';
 })
 export class CategorySelectComponent implements OnInit {
   categories: Category[] = []
+
+  @Output() onCategoryChange = new EventEmitter<Category>()
 
   constructor(private categoriesSevice: CategoriesService) {}
 
@@ -23,5 +26,11 @@ export class CategorySelectComponent implements OnInit {
         this.categories = response.data
       }
     })
+  }
+
+  onCategorySelected(event: MatSelectChange) {
+    this.onCategoryChange.emit(
+      this.categories.find((category) => (category.id = event.value)),
+    )
   }
 }

@@ -12,6 +12,8 @@ import { Category } from '../category.model';
 export class CategorySelectComponent implements OnInit {
   categories: Category[] = []
 
+  valueSelected: string = ''
+
   @Output() onCategoryChange = new EventEmitter<Category>()
 
   constructor(private categoriesSevice: CategoriesService) {}
@@ -32,5 +34,9 @@ export class CategorySelectComponent implements OnInit {
     this.onCategoryChange.emit(
       this.categories.find((category) => category.id == event.value),
     )
+  }
+
+  unselect() {
+    this.valueSelected = ''
   }
 }

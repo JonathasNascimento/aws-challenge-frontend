@@ -1,6 +1,7 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { CategorySelectComponent } from 'src/app/categories/category-select/category-select.component';
 import { Category } from 'src/app/categories/category.model';
 
 import { Device } from '../device.model';
@@ -16,6 +17,8 @@ export class DeviceRegistrationComponent implements OnInit {
   isLoading: boolean = false
 
   @Output() deviceAdded = new EventEmitter<void>()
+
+  @ViewChild('categorySelect') categorySelect!: CategorySelectComponent
 
   constructor(
     private devicesService: DevicesService,
@@ -54,7 +57,7 @@ export class DeviceRegistrationComponent implements OnInit {
       if (response.status == 'success') {
         this.deviceAdded.emit()
         this.clearAllFields()
-
+        this.categorySelect.unselect()
         this.showSnackBar('Device successfully added!')
       }
     })

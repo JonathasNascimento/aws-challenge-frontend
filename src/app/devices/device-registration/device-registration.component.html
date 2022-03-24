@@ -4,7 +4,7 @@
     <form [formGroup]="form">
       <div fxLayout="column" fxLayoutGap="6px">
 
-        <app-category-select (onCategoryChange)="onCategorySelected($event)"></app-category-select>
+        <app-category-select #categorySelect (onCategoryChange)="onCategorySelected($event)"></app-category-select>
 
         <mat-form-field appearance="fill">
           <mat-label>Color</mat-label>

@@ -7,12 +7,14 @@ import { CategoriesRoutingModule } from './categories-routing.module';
 import { CategoriesComponent } from './categories.component';
 import { CategoryListComponent } from './category-list/category-list.component';
 import { CategoryRegistrationComponent } from './category-registration/category-registration.component';
+import { CategorySelectComponent } from './category-select/category-select.component';
 
 @NgModule({
   declarations: [
     CategoriesComponent,
     CategoryListComponent,
     CategoryRegistrationComponent,
+    CategorySelectComponent,
   ],
   imports: [
     CommonModule,

@@ -1,3 +1,7 @@
+.container {
+  width: 600px;
+}
+
 .card-buttons {
   align-self: center;
   margin-top: -16px;

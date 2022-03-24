@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Category } from 'src/app/categories/category.model';
 
 import { Device } from '../device.model';
@@ -19,6 +20,7 @@ export class DeviceRegistrationComponent implements OnInit {
   constructor(
     private devicesService: DevicesService,
     private formBuilder: FormBuilder,
+    private snackBar: MatSnackBar,
   ) {
     this.form = this.formBuilder.group({
       color: [null, Validators.required],
@@ -44,12 +46,16 @@ export class DeviceRegistrationComponent implements OnInit {
       color: this.getFieldValue('color'),
       partNumber: +this.getFieldValue('partNumber'),
     }
+
     this.isLoading = true
+
     this.devicesService.createNewDevices(device).subscribe((response) => {
       this.isLoading = false
       if (response.status == 'success') {
         this.deviceAdded.emit()
         this.clearAllFields()
+
+        this.showSnackBar('Device successfully added!')
       }
     })
   }
@@ -71,6 +77,13 @@ export class DeviceRegistrationComponent implements OnInit {
     return Object.keys(this.form.controls).every((key) => {
       const control = this.form.get(key)
       return control?.valid
+    })
+  }
+
+  private showSnackBar(message: string) {
+    this.snackBar.open(message, 'Done', {
+      horizontalPosition: 'start',
+      duration: 3000,
     })
   }
 }

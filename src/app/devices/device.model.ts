@@ -2,7 +2,8 @@ import { Category } from '../categories/category.model';
 
 export interface Device {
   id?: number
-  category: Category
+  category?: Category
+  categoryId?: number
   color: string
-  partName: number
+  partNumber: number
 }

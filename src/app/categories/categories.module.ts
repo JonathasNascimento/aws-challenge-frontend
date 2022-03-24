@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MaterialModule } from '../material.module';
 import { CategoriesRoutingModule } from './categories-routing.module';
@@ -14,6 +14,12 @@ import { CategoryRegistrationComponent } from './category-registration/category-
     CategoryListComponent,
     CategoryRegistrationComponent,
   ],
-  imports: [CommonModule, CategoriesRoutingModule, MaterialModule, FormsModule],
+  imports: [
+    CommonModule,
+    CategoriesRoutingModule,
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
 })
 export class CategoriesModule {}

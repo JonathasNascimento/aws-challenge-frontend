@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { CategoriesService } from '../categories.service';
@@ -10,6 +11,8 @@ import { Category } from '../category.model';
   styleUrls: ['./category-registration.component.css'],
 })
 export class CategoryRegistrationComponent implements OnInit {
+  categoryFormControl = new FormControl('', [Validators.required])
+
   category: Category = { name: '' }
   isLoading: boolean = false
 
@@ -23,17 +26,26 @@ export class CategoryRegistrationComponent implements OnInit {
   ngOnInit(): void {}
 
   createNewCategory() {
+    if (!this.categoryFormControl.valid) {
+      return
+    }
+
     this.isLoading = true
+
     this.categoriesService
       .createCategory(this.category)
       .subscribe((response) => {
         if (response.status == 'success') {
-          this.categoryAdded.emit()
           this.isLoading = false
+
+          this.categoryAdded.emit()
+
           this.showSnackBar(
             `Category '${this.category.name}' added successfully`,
           )
+
           this.category.name = ''
+          this.categoryFormControl.markAsUntouched()
         }
       })
   }

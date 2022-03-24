@@ -5,13 +5,15 @@
 
         <mat-form-field appearance="fill">
           <mat-label>Category</mat-label>
-          <input matInput maxlength="128">
+          <input matInput maxlength="128" name="category.name" [(ngModel)]="category.name">
         </mat-form-field>
 
         <div class="card-buttons">
-          <button type="button" mat-button mat-raised-button color="primary">
+          <button type="button" mat-button mat-raised-button color="primary" disabled="{{ isLoading }}"
+            (click)="createNewCategory()">
             ADD
           </button>
+          <mat-spinner diameter="24" *ngIf="isLoading"></mat-spinner>
         </div>
       </div>
     </form>

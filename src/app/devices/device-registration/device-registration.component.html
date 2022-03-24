@@ -1,23 +1,23 @@
 <mat-card class="container">
   <mat-card-subtitle>Device Registration</mat-card-subtitle>
   <mat-card-content>
-    <form>
+    <form [formGroup]="form">
       <div fxLayout="column" fxLayoutGap="6px">
 
-        <app-category-select></app-category-select>
+        <app-category-select (onCategoryChange)="onCategorySelected($event)"></app-category-select>
 
         <mat-form-field appearance="fill">
           <mat-label>Color</mat-label>
-          <input matInput maxlength="16">
+          <input matInput maxlength="16" formControlName="color">
         </mat-form-field>
 
         <mat-form-field appearance="fill">
           <mat-label>Part Number</mat-label>
-          <input type="number" matInput min="1">
+          <input type="number" matInput min="1" name="part-number" formControlName="partNumber">
         </mat-form-field>
 
         <div class="card-buttons">
-          <button type="button" mat-button mat-raised-button color="primary">
+          <button type="button" mat-button mat-raised-button color="primary" (click)="createDevice()">
             ADD
           </button>
         </div>

@@ -6,10 +6,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { DialogConfirmationComponent } from './components/dialog-confirmation/dialog-confirmation.component';
 import { MaterialModule } from './material.module';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, DialogConfirmationComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

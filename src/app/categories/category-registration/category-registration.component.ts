@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { CategoriesService } from '../categories.service';
@@ -13,6 +13,8 @@ export class CategoryRegistrationComponent implements OnInit {
   category: Category = { name: '' }
   isLoading: boolean = false
 
+  @Output() categoryAdded = new EventEmitter<void>()
+
   constructor(
     private categoriesService: CategoriesService,
     private snackBar: MatSnackBar,
@@ -25,10 +27,14 @@ export class CategoryRegistrationComponent implements OnInit {
     this.categoriesService
       .createCategory(this.category)
       .subscribe((response) => {
-        this.isLoading = false
-
-        this.showSnackBar(`Category '${this.category.name}' added successfully`)
-        this.category.name = ''
+        if (response.status == 'success') {
+          this.categoryAdded.emit()
+          this.isLoading = false
+          this.showSnackBar(
+            `Category '${this.category.name}' added successfully`,
+          )
+          this.category.name = ''
+        }
       })
   }
 

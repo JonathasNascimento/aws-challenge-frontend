@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+
+import { CategoryListComponent } from './category-list/category-list.component';
 
 @Component({
   selector: 'app-categories',
@@ -8,5 +10,11 @@ import { Component, OnInit } from '@angular/core';
 export class CategoriesComponent implements OnInit {
   constructor() {}
 
+  @ViewChild(CategoryListComponent) child!: CategoryListComponent
+
   ngOnInit(): void {}
+
+  onCategoryAdded() {
+    this.child.loadCategories()
+  }
 }

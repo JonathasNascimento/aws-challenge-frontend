@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { CategoriesModule } from '../categories/categories.module';
+import { OnlyLettersDirective } from '../directives/only-letters.directive';
 import { MaterialModule } from '../material.module';
 import { DeviceExcludeComponent } from './device-exclude/device-exclude.component';
 import { DeviceListComponent } from './device-list/device-list.component';
@@ -16,6 +17,7 @@ import { DevicesComponent } from './devices.component';
     DeviceRegistrationComponent,
     DeviceListComponent,
     DeviceExcludeComponent,
+    OnlyLettersDirective,
   ],
   imports: [
     CommonModule,

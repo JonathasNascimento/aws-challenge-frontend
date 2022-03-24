@@ -35,9 +35,9 @@ export class CategoryRegistrationComponent implements OnInit {
     this.categoriesService
       .createCategory({ name: this.control.value })
       .subscribe((response) => {
-        if (response.status == 'success') {
-          this.isLoading = false
+        this.isLoading = false
 
+        if (response.status == 'success') {
           this.categoryAdded.emit()
 
           this.showSnackBar(

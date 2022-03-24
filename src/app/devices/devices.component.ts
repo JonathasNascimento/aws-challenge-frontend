@@ -1,15 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+
+import { DeviceListComponent } from './device-list/device-list.component';
 
 @Component({
   selector: 'app-devices',
   templateUrl: './devices.component.html',
-  styleUrls: ['./devices.component.css']
+  styleUrls: ['./devices.component.css'],
 })
 export class DevicesComponent implements OnInit {
+  @ViewChild(DeviceListComponent) child!: DeviceListComponent
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  onDeviceAdded() {
+    this.child.loadDevices()
   }
-
 }

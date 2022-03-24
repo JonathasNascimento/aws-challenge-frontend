@@ -18,6 +18,6 @@ Após o clone do projeto:
 
 - Build do projeto
 
-  `npx ng serve -o`
+  `$ npx ng serve -o`
   ou
   `$ ng serve -o`

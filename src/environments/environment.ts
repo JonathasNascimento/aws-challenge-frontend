@@ -7,7 +7,7 @@ export const environment = {
 }
 
 export const api = {
-  baseUrl: 'http://localhost:3000/',
+  baseUrl: 'http://localhost:3000/api/v1/',
   endpoints: {
     categories: '/categories',
     devices: '/devices',

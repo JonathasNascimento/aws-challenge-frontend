@@ -5,16 +5,15 @@
 
         <mat-form-field appearance="fill">
           <mat-label>Category</mat-label>
-          <input matInput name="category.name" [formControl]="categoryFormControl" [(ngModel)]="category.name"
-            maxlength="128">
-          <mat-error *ngIf="categoryFormControl.hasError('required')">
+          <input matInput name="category.name" [formControl]="control" maxlength="128">
+          <mat-error *ngIf="control.hasError('required')">
             Category is <strong>required</strong>
           </mat-error>
         </mat-form-field>
 
         <div class="card-buttons">
-          <button type="button" mat-button mat-raised-button color="primary"
-            [disabled]="isLoading || !categoryFormControl.valid" (click)="createNewCategory()">
+          <button type="button" mat-button mat-raised-button color="primary" [disabled]="isLoading || !control.valid"
+            (click)="createNewCategory()">
             ADD
           </button>
           <mat-spinner diameter="24" *ngIf="isLoading"></mat-spinner>

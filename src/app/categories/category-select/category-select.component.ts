@@ -30,7 +30,7 @@ export class CategorySelectComponent implements OnInit {
 
   onCategorySelected(event: MatSelectChange) {
     this.onCategoryChange.emit(
-      this.categories.find((category) => (category.id = event.value)),
+      this.categories.find((category) => category.id == event.value),
     )
   }
 }

@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { MaterialModule } from '../material.module';
 import { CategoriesRoutingModule } from './categories-routing.module';
@@ -8,7 +9,11 @@ import { CategoryListComponent } from './category-list/category-list.component';
 import { CategoryRegistrationComponent } from './category-registration/category-registration.component';
 
 @NgModule({
-  declarations: [CategoriesComponent, CategoryListComponent, CategoryRegistrationComponent],
-  imports: [CommonModule, CategoriesRoutingModule, MaterialModule],
+  declarations: [
+    CategoriesComponent,
+    CategoryListComponent,
+    CategoryRegistrationComponent,
+  ],
+  imports: [CommonModule, CategoriesRoutingModule, MaterialModule, FormsModule],
 })
 export class CategoriesModule {}

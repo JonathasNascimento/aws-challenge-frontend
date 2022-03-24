@@ -41,7 +41,7 @@ export class CategoryRegistrationComponent implements OnInit {
           this.categoryAdded.emit()
 
           this.showSnackBar(
-            `Category '${this.category.name}' added successfully`,
+            `Category '${this.control.value}' added successfully`,
           )
 
           this.control.setValue('')

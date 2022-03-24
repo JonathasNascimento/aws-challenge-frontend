@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Device } from '../device.model';
+import { DevicesService } from '../devices.service';
+
 @Component({
   selector: 'app-device-list',
   templateUrl: './device-list.component.html',
@@ -7,22 +10,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DeviceListComponent implements OnInit {
   displayedColumns: string[] = ['category', 'color', 'partNumber', 'action']
-  dataSource = [
-    { category: 'cat-1', color: 'white', partNumber: '12345' },
-    { category: 'cat-1', color: 'white', partNumber: '12345' },
-    { category: 'cat-1', color: 'white', partNumber: '12345' },
-    { category: 'cat-1', color: 'white', partNumber: '12345' },
-    { category: 'cat-1', color: 'white', partNumber: '12345' },
-    { category: 'cat-1', color: 'white', partNumber: '12345' },
-    { category: 'cat-1', color: 'white', partNumber: '12345' },
-    { category: 'cat-1', color: 'white', partNumber: '12345' },
-    { category: 'cat-1', color: 'white', partNumber: '12345' },
-    { category: 'cat-1', color: 'white', partNumber: '12345' },
-    { category: 'cat-1', color: 'white', partNumber: '12345' },
-    { category: 'cat-1', color: 'white', partNumber: '12345' },
-  ]
+  dataSource: Device[] = []
 
-  constructor() {}
+  constructor(private devicesService: DevicesService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.loadDevices()
+  }
+
+  loadDevices() {
+    this.devicesService.findAllDevices().subscribe((response) => {
+      if (response.status == 'success') {
+        this.dataSource = response.data
+      }
+    })
+  }
+
+  deleteDevice(device: Device) {
+    if (device.id) {
+      this.devicesService.deleteDevice(device.id).subscribe((response) => {
+        if (response.status == 'success') {
+        }
+      })
+    }
+  }
 }

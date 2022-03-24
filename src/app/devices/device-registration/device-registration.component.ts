@@ -67,7 +67,7 @@ export class DeviceRegistrationComponent implements OnInit {
     })
   }
 
-  private isAllFieldsValid(): boolean {
+  isAllFieldsValid(): boolean {
     return Object.keys(this.form.controls).every((key) => {
       const control = this.form.get(key)
       return control?.valid

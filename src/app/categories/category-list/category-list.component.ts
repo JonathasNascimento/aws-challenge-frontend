@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { CategoriesService } from '../categories.service';
+import { Category } from '../category.model';
+
 @Component({
   selector: 'app-category-list',
   templateUrl: './category-list.component.html',
@@ -7,22 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoryListComponent implements OnInit {
   displayedColumns: string[] = ['category', 'action']
-  dataSource = [
-    { id: 1, name: 'cat-1' },
-    { id: 1, name: 'cat-1' },
-    { id: 1, name: 'cat-1' },
-    { id: 1, name: 'cat-1' },
-    { id: 1, name: 'cat-1' },
-    { id: 1, name: 'cat-1' },
-    { id: 1, name: 'cat-1' },
-    { id: 1, name: 'cat-1' },
-    { id: 1, name: 'cat-1' },
-    { id: 1, name: 'cat-1' },
-    { id: 1, name: 'cat-1' },
-    { id: 1, name: 'cat-1' },
-  ]
+  dataSource: Category[] = []
 
-  constructor() {}
+  constructor(private categoriesService: CategoriesService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.categoriesService.findCategories().subscribe((response) => {
+      if (response.status == 'success') {
+        this.dataSource = response.data
+      }
+    })
+  }
 }

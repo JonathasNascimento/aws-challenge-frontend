@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { CategoriesModule } from '../categories/categories.module';
 import { MaterialModule } from '../material.module';
@@ -20,6 +21,8 @@ import { DevicesComponent } from './devices.component';
     CommonModule,
     DevicesRoutingModule,
     MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
     CategoriesModule,
   ],
 })

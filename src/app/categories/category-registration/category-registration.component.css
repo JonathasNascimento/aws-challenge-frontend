@@ -1,4 +1,10 @@
 .card-buttons {
   align-self: center;
   margin-top: -16px;
+  display: flex;
+}
+
+mat-spinner {
+  margin: 0 12px;
+  align-self: center;
 }

@@ -46,6 +46,8 @@ export class CategoryRegistrationComponent implements OnInit {
 
           this.control.setValue('')
           this.control.markAsUntouched()
+        } else {
+          this.showSnackBar(response?.message)
         }
       })
   }

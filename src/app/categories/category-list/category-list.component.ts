@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { DialogConfirmationComponent } from 'src/app/components/dialog-confirmation/dialog-confirmation.component';
 
 import { CategoriesService } from '../categories.service';
@@ -17,6 +18,7 @@ export class CategoryListComponent implements OnInit {
   constructor(
     private categoriesService: CategoriesService,
     private dialog: MatDialog,
+    private snackBar: MatSnackBar,
   ) {}
 
   ngOnInit(): void {
@@ -46,6 +48,8 @@ export class CategoryListComponent implements OnInit {
             this.dataSource = this.dataSource.filter(
               (item) => item.id != category.id,
             )
+          } else {
+            this.showSnackBar(response?.message)
           }
         })
     }
@@ -65,6 +69,12 @@ export class CategoryListComponent implements OnInit {
       if (result == 'confirm') {
         onConfirm()
       }
+    })
+  }
+
+  private showSnackBar(message: string) {
+    this.snackBar.open(message, 'Done', {
+      horizontalPosition: 'start',
     })
   }
 }

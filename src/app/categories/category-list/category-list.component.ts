@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogConfirmationComponent } from 'src/app/components/dialog-confirmation/dialog-confirmation.component';
 
 import { CategoriesService } from '../categories.service';
 import { Category } from '../category.model';
@@ -15,7 +16,7 @@ export class CategoryListComponent implements OnInit {
 
   constructor(
     private categoriesService: CategoriesService,
-    private snackBar: MatSnackBar,
+    private dialog: MatDialog,
   ) {}
 
   ngOnInit(): void {
@@ -31,6 +32,12 @@ export class CategoryListComponent implements OnInit {
   }
 
   deleteCategory(category: Category) {
+    this.openDialog(() => {
+      this.deleteCategoryHandle(category)
+    })
+  }
+
+  private deleteCategoryHandle(category: Category) {
     if (category.id) {
       this.categoriesService
         .deleteCategory(category.id)
@@ -44,10 +51,20 @@ export class CategoryListComponent implements OnInit {
     }
   }
 
-  private showSnackBar(message: string) {
-    this.snackBar.open(message, 'Done', {
-      horizontalPosition: 'start',
-      duration: 3000,
+  openDialog(onConfirm: () => void) {
+    const dialogRef = this.dialog.open(DialogConfirmationComponent, {
+      width: '400px',
+      data: {
+        title: 'Remove Category',
+        description: 'Are you sure you want to remove this category?',
+        buttonConfirm: 'Remove',
+      },
+    })
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result == 'confirm') {
+        onConfirm()
+      }
     })
   }
 }

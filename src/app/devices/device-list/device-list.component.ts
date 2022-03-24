@@ -54,7 +54,7 @@ export class DeviceListComponent implements OnInit {
       width: '400px',
       data: {
         title: 'Remove Device',
-        description: 'Are you sure you want to delete this device?',
+        description: 'Are you sure you want to remove this device?',
         buttonConfirm: 'Remove',
       },
     })
